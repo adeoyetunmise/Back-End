@@ -18,6 +18,7 @@
 
 import express from 'express'
 import dotenv from 'dotenv'
+import studentRouter from './routes/studentsRoutes.js'
 
 dotenv.config()
 
@@ -26,6 +27,9 @@ const app = express()
 // this helps to know which form we want our info to display
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+
+
+app.use('/api', studentRouter)
 
 app.get('/', (req, res) => {
     res.send('This is our page')
