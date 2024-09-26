@@ -19,6 +19,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import studentRouter from './routes/studentsRoutes.js'
+import teacherRouter from './routes/teachersRoutes.js'
 // this is used to connect to the database
 import mongoose from 'mongoose'
 
@@ -31,25 +32,26 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 
-app.use('/api', studentRouter)
+app.use('/api/students', studentRouter)
+app.use('/api/teachers', teacherRouter)
 
-app.get('/', (req, res) => {
-    res.send('This is our page')
-})
+// app.get('/', (req, res) => {
+//     res.send('This is our page')
+// })
 
-app.get('/about', (req, res) => {
-    res.json({name:'Tunmise',
-            age: 20,
-            country: "Nigeria",
-            complexion: "Fair"
-    })
-})
+// app.get('/about', (req, res) => {
+//     res.json({name:'Tunmise',
+//             age: 20,
+//             country: "Nigeria",
+//             complexion: "Fair"
+//     })
+// })
 
-app.post('/', (req, res) => {
-    const {name, message} = req.body
+// app.post('/', (req, res) => {
+//     const {name, message} = req.body
 
-    res.json({name, message})
-})
+//     res.json({name, message})
+// })
 
 const PORT = process.env.PORT
 

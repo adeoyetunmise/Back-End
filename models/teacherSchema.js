@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const studentSchema = new Schema({
+const teacherSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -11,7 +11,7 @@ const studentSchema = new Schema({
         type: Number,
         required: true
     },
-    matric_number: {
+    staff_id: {
         type: String,
         required: true,
         unique: true
@@ -19,10 +19,22 @@ const studentSchema = new Schema({
     department: {
         type: String,
         required: true
+    },
+
+    qualification: {
+        type: String,
+        required: true
+    },
+
+    salary: {
+        type: Number,
+        required:true
     }
+
+
 });
 
 
-const Student = mongoose.model('Student', studentSchema)
+const Teacher = mongoose.model('teacher', teacherSchema)
 
-export default Student
+export default Teacher
