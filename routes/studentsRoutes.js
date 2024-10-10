@@ -3,7 +3,7 @@ import { createStudent, getStudents, getSingleStudent, editStudent, removeStuden
 
 const studentRouter = Router()
 
-studentRouter.get('/ ', getStudents)
+studentRouter.get('/', getStudents)
 studentRouter.post('/', createStudent)
 studentRouter.get('/:_id', getSingleStudent)
 studentRouter.patch('/:_id', editStudent)

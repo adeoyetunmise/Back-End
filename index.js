@@ -22,6 +22,7 @@ import studentRouter from './routes/studentsRoutes.js'
 import teacherRouter from './routes/teachersRoutes.js'
 // this is used to connect to the database
 import mongoose from 'mongoose'
+import cors from 'cors'
 
 dotenv.config()
 
@@ -30,14 +31,15 @@ const app = express()
 // this helps to know which form we want our info to display
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+app.use(cors())
 
 
 app.use('/api/students', studentRouter)
 app.use('/api/teachers', teacherRouter)
 
-// app.get('/', (req, res) => {
-//     res.send('This is our page')
-// })
+app.get('/', (req, res) => {
+    res.send('This is our page')
+})
 
 // app.get('/about', (req, res) => {
 //     res.json({name:'Tunmise',
@@ -53,7 +55,7 @@ app.use('/api/teachers', teacherRouter)
 //     res.json({name, message})
 // })
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT 
 
 app.listen(PORT, (err) =>{
     console.log('listening at '+ PORT);
