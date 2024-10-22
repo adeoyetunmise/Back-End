@@ -5,7 +5,7 @@ const teacherRouter = Router()
 
 teacherRouter.get('/', getTeachers)
 teacherRouter.post('/', createTeacher)
-// teacherRouter.get('/:_id', getSingleTeacher)
+teacherRouter.get('/:_id', getSingleTeacher)
 teacherRouter.patch('/:_id', editTeacher)
 teacherRouter.delete('/:_id', removeTeacher)
 

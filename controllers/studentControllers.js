@@ -30,21 +30,17 @@ export const createStudent = async (req, res) => {
 }
 
 export const getSingleStudent = async (req, res) => {
-    const {_id} = req.params
-
-    try{
-        if(!mongoose.Types.ObjectId.isValid(_id)){
-            return res.status(400).json({error: "invalid student"})
+    try {
+        const student = await Student.findById(req.params.id); // Use req.params.id
+        if (!student) {
+            return res.status(404).json({ message: 'Student not found' });
         }
-
-        const student = await Student.findById(_id)
-        if (!student){
-            return res.status(404).json({error: "student not found"})
-        }
-    }catch(error){
-        res.status(400).json({error:  "error"})
+        res.json({ student });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
     }
-}
+};
 
 export const editStudent = async (req, res) => {
     const {_id} = req.params

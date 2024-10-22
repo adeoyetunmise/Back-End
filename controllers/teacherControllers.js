@@ -11,7 +11,7 @@ export const getTeachers = async (req, res) => {
         res.status(200).json({ teachers })
     } catch (error) {
         res.status(404).json({ "Error": error})
-    }
+    } 
 }
  
 
@@ -41,6 +41,7 @@ export const getSingleTeacher = async (req, res) => {
         if (!teacher){
             return res.status(404).json({error: "teacher not found"})
         }
+        res.json({ teacher });
     }catch(error){
         res.status(400).json({error:  "error"})
     }
