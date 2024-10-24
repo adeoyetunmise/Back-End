@@ -23,6 +23,7 @@ import teacherRouter from './routes/teachersRoutes.js'
 // this is used to connect to the database
 import mongoose from 'mongoose'
 import cors from 'cors'
+import userRoute from './routes/userRoute.js'
 
 dotenv.config()
 
@@ -36,6 +37,7 @@ app.use(cors())
 
 app.use('/api/students', studentRouter)
 app.use('/api/teachers', teacherRouter)
+app.use('/api/auth', userRoute)
 
 app.get('/', (req, res) => {
     res.send('This is our page')
